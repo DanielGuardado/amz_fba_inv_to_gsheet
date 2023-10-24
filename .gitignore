@@ -1,0 +1,6 @@
+tmp/
+env/
+chrome_profile_seller_central/
+__pycache__/
+config.py
+keys.json
