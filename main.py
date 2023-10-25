@@ -71,7 +71,12 @@ def main():
         download_folder_path = seller_central.driver_actions.download_path
         seller_central.driver_actions.quit()
         df = pd.read_csv(get_file_path(download_folder_path), encoding="ISO-8859-1")
-        df["usable-sku"] = df["sku"].str.replace("-FBA", "", regex=False)
+        df["usable-sku"] = (
+            df["sku"]
+            .str.replace("-FBA", "", regex=False)
+            .str.replace("_FBA", "", regex=False)
+        )
+
         df.fillna(
             0, inplace=True
         )  # Replace NaN with "N/A" or another placeholder value
